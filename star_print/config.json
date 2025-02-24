@@ -1,0 +1,22 @@
+{
+  "name": "Advanced Star Print Add-on",
+  "version": "1.0.0",
+  "slug": "star_print",
+  "description": "An advanced Home Assistant add-on to print text, images, and barcodes using python-escpos (for Star MC-Print3 in ESC/POS mode).",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "startup": "services",
+  "boot": "auto",
+  "build": {},
+  "options": {
+    "printer_ip": "192.168.1.100",
+    "printer_port": 9100,
+    "web_port": 5000,
+    "enable_debug": false
+  },
+  "schema": {
+    "printer_ip": "str",
+    "printer_port": "int",
+    "web_port": "int",
+    "enable_debug": "bool"
+  }
+}

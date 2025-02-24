@@ -1,0 +1,24 @@
+FROM python:3.9-slim
+
+# Install system dependencies required for building python-escpos and handling images
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    libffi-dev \
+    libc6-dev \
+    libusb-1.0-0-dev \
+    imagemagick \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy and install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the rest of the application code
+COPY . .
+
+# Expose the port the Flask server will run on (as defined by "web_port")
+EXPOSE 5000
+
+CMD ["python", "main.py"]
